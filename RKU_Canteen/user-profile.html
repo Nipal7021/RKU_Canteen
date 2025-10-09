@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - Canteen</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="topbar">
+        <div class="container">
+            <nav class="nav">
+                <div class="left">
+                    <a href="index.html" class="logo">
+                        <span class="logo-text">Canteen</span>
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="menu.html" class="nav-link">Menu</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="pages.html" class="nav-link">Pages</a>
+                    
+                    <!-- User Authentication Section -->
+                    <div class="user-auth" id="user-auth">
+                        <!-- Show when not logged in -->
+                        <div class="auth-links" id="auth-links">
+                            <a href="user-login.html" class="nav-link">
+                                <i class="fas fa-user"></i> Login
+                            </a>
+                            <a href="user-register.html" class="nav-link">
+                                <i class="fas fa-user-plus"></i> Register
+                            </a>
+                        </div>
+                        
+                        <!-- Show when logged in -->
+                        <div class="user-dropdown" id="user-dropdown" style="display: none;">
+                            <button class="user-menu-btn" id="user-menu-btn">
+                                <i class="fas fa-user-circle"></i>
+                                <span class="user-name" id="user-name">User</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="user-menu" id="user-menu">
+                                <div class="user-menu-header">
+                                    <div class="user-avatar">
+                                        <i class="fas fa-user-circle"></i>
+                                    </div>
+                                    <div class="user-info">
+                                        <strong id="menu-user-name">User Name</strong>
+                                        <div class="muted" id="menu-user-email">user@example.com</div>
+                                    </div>
+                                </div>
+                                <div class="user-menu-items">
+                                    <a href="user-profile.html" class="user-menu-item">
+                                        <i class="fas fa-user"></i>
+                                        <span>My Profile</span>
+                                    </a>
+                                    <a href="user-profile.html#orders" class="user-menu-item">
+                                        <i class="fas fa-box"></i>
+                                        <span>My Orders</span>
+                                    </a>
+                                    <a href="user-profile.html#wishlist" class="user-menu-item">
+                                        <i class="fas fa-heart"></i>
+                                        <span>Wishlist</span>
+                                    </a>
+                                    <div class="menu-divider"></div>
+                                    <button class="user-menu-item logout-btn" onclick="logout()">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        <span>Logout</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Admin Link (visible for all users) -->
+                    <a href="admin-login.html" class="nav-link" id="admin-link">
+                        <i class="fas fa-user-shield"></i> Admin
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Profile Section -->
+    <section class="profile-section">
+        <div class="container">
+            <div class="profile-container">
+                <!-- Profile Sidebar -->
+                <div class="profile-sidebar">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="profile-info">
+                            <h3 id="user-display-name">Loading...</h3>
+                            <p class="muted" id="user-display-email">Loading...</p>
+                            <span class="user-badge" id="user-type-badge">Regular User</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-menu">
+                        <a href="#" class="profile-menu-item active" onclick="showProfileTab('overview')">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Overview
+                        </a>
+                        <a href="#" class="profile-menu-item" onclick="showProfileTab('orders')">
+                            <i class="fas fa-shopping-bag"></i>
+                            My Orders
+                        </a>
+                        <a href="#" class="profile-menu-item" onclick="showProfileTab('profile')">
+                            <i class="fas fa-user-edit"></i>
+                            Edit Profile
+                        </a>
+                        <a href="#" class="profile-menu-item" onclick="showProfileTab('addresses')">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Addresses
+                        </a>
+                        <a href="#" class="profile-menu-item" onclick="showProfileTab('wishlist')">
+                            <i class="fas fa-heart"></i>
+                            Wishlist
+                        </a>
+                        <a href="#" class="profile-menu-item" onclick="showProfileTab('settings')">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                        <a href="#" class="profile-menu-item logout-item" onclick="logoutUser()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Profile Content -->
+                <div class="profile-content">
+                    <!-- Overview Tab -->
+                    <div id="overview-tab" class="profile-tab active">
+                        <div class="profile-header">
+                            <h2><i class="fas fa-tachometer-alt"></i> Account Overview</h2>
+                        </div>
+
+                        <div class="overview-stats">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-shopping-bag"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3 id="total-user-orders">0</h3>
+                                    <p class="muted">Total Orders</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-rupee-sign"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3 id="total-spent">₹0</h3>
+                                    <p class="muted">Total Spent</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3 id="wishlist-count">0</h3>
+                                    <p class="muted">Wishlist Items</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recent-orders">
+                            <h3>Recent Orders</h3>
+                            <div id="recent-orders-list">
+                                <!-- Recent orders will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orders Tab -->
+                    <div id="orders-tab" class="profile-tab">
+                        <div class="profile-header">
+                            <h2><i class="fas fa-shopping-bag"></i> My Orders</h2>
+                        </div>
+                        <div id="orders-list">
+                            <!-- Orders will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Profile Edit Tab -->
+                    <div id="profile-tab" class="profile-tab">
+                        <div class="profile-header">
+                            <h2><i class="fas fa-user-edit"></i> Edit Profile</h2>
+                        </div>
+                        <form id="profile-edit-form" class="profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="edit-first-name">First Name</label>
+                                    <input type="text" id="edit-first-name" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-last-name">Last Name</label>
+                                    <input type="text" id="edit-last-name" name="lastName" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-email">Email Address</label>
+                                <input type="email" id="edit-email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-phone">Phone Number</label>
+                                <input type="tel" id="edit-phone" name="phone" required>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn">
+                                    <i class="fas fa-save"></i>
+                                    Save Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Other tabs would be implemented similarly -->
+                    <div id="addresses-tab" class="profile-tab">
+                        <div class="profile-header">
+                            <h2><i class="fas fa-map-marker-alt"></i> My Addresses</h2>
+                        </div>
+                        <p class="muted">Address management coming soon...</p>
+                    </div>
+
+                    <div id="wishlist-tab" class="profile-tab">
+                        <div class="profile-header">
+                            <h2><i class="fas fa-heart"></i> My Wishlist</h2>
+                        </div>
+                        <p class="muted">Wishlist feature coming soon...</p>
+                    </div>
+
+                    <div id="settings-tab" class="profile-tab">
+                        <div class="profile-header">
+                            <h2><i class="fas fa-cog"></i> Account Settings</h2>
+                        </div>
+                        <p class="muted">Settings panel coming soon...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RKU Canteen Management</h3>
+                    <p class="muted">Delicious meals, quick service.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p class="muted">Email: hello@rkucanteen.local</p>
+                    <p class="muted">Phone: +91 98765 43210</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="muted">&copy; 2025 RKU Canteen Management. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/validation.js"></script>
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - RKU Canteen Management</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="topbar">
+        <div class="container">
+            <nav class="nav">
+                <div class="left">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon">🚗</span>
+                        <span class="logo-text">RKU Canteen Management</span>
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="products.html" class="nav-link">Products</a>
+                    <a href="categories.html" class="nav-link">Categories</a>
+                    <a href="cart.html" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i> Cart <span id="cart-count" class="badge">0</span>
+                    </a>
+                    
+                    <!-- User Authentication Section -->
+                    <div class="user-auth" id="user-auth">
+                        <!-- Show when not logged in -->
+                        <div class="auth-links" id="auth-links">
+                            <a href="user-login.html" class="nav-link">
+                                <i class="fas fa-user"></i> Login
+                            </a>
+                            <a href="user-register.html" class="nav-link">
+                                <i class="fas fa-user-plus"></i> Register
+                            </a>
+                        </div>
+                        
+                        <!-- Show when logged in -->
+                        <div class="user-dropdown" id="user-dropdown" style="display: none;">
+                            <button class="user-menu-btn" id="user-menu-btn">
+                                <i class="fas fa-user-circle"></i>
+                                <span class="user-name" id="user-name">User</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="user-menu" id="user-menu">
+                                <div class="user-menu-header">
+                                    <div class="user-avatar">
+                                        <i class="fas fa-user-circle"></i>
+                                    </div>
+                                    <div class="user-info">
+                                        <strong id="menu-user-name">User Name</strong>
+                                        <div class="muted" id="menu-user-email">user@example.com</div>
+                                    </div>
+                                </div>
+                                <div class="user-menu-items">
+                                    <a href="user-profile.html" class="user-menu-item">
+                                        <i class="fas fa-user"></i>
+                                        <span>My Profile</span>
+                                    </a>
+                                    <a href="user-profile.html#orders" class="user-menu-item">
+                                        <i class="fas fa-box"></i>
+                                        <span>My Orders</span>
+                                    </a>
+                                    <a href="user-profile.html#wishlist" class="user-menu-item">
+                                        <i class="fas fa-heart"></i>
+                                        <span>Wishlist</span>
+                                    </a>
+                                    <div class="menu-divider"></div>
+                                    <button class="user-menu-item logout-btn" onclick="logout()">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        <span>Logout</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Admin Link (visible for all users) -->
+                    <a href="admin-login.html" class="nav-link" id="admin-link">
+                        <i class="fas fa-user-shield"></i> Admin
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Checkout</h1>
+            <p class="muted">Complete your order details</p>
+        </div>
+    </section>
+
+    <!-- Checkout Content -->
+    <section class="checkout-section">
+        <div class="container">
+            <div class="checkout-container">
+                <div class="checkout-form">
+                    <form id="checkout-form">
+                        <!-- Shipping Information -->
+                        <div class="form-section">
+                            <h3>Shipping Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name">First Name *</label>
+                                    <input type="text" id="first-name" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last-name">Last Name *</label>
+                                    <input type="text" id="last-name" name="lastName" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="address">Street Address *</label>
+                                <input type="text" id="address" name="address" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City *</label>
+                                    <input type="text" id="city" name="city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State *</label>
+                                    <select id="state" name="state" required>
+                                        <option value="">Select State</option>
+                                        <option value="AN">Andaman and Nicobar Islands</option>
+                                        <option value="AP">Andhra Pradesh</option>
+                                        <option value="AR">Arunachal Pradesh</option>
+                                        <option value="AS">Assam</option>
+                                        <option value="BR">Bihar</option>
+                                        <option value="CG">Chhattisgarh</option>
+                                        <option value="CH">Chandigarh</option>
+                                        <option value="DH">Dadra and Nagar Haveli</option>
+                                        <option value="DD">Daman and Diu</option>
+                                        <option value="DL">Delhi</option>
+                                        <option value="GA">Goa</option>
+                                        <option value="GJ">Gujarat</option>
+                                        <option value="HR">Haryana</option>
+                                        <option value="HP">Himachal Pradesh</option>
+                                        <option value="JK">Jammu and Kashmir</option>
+                                        <option value="JH">Jharkhand</option>
+                                        <option value="KA">Karnataka</option>
+                                        <option value="KL">Kerala</option>
+                                        <option value="LD">Lakshadweep</option>
+                                        <option value="MP">Madhya Pradesh</option>
+                                        <option value="MH">Maharashtra</option>
+                                        <option value="MN">Manipur</option>
+                                        <option value="ML">Meghalaya</option>
+                                        <option value="MZ">Mizoram</option>
+                                        <option value="NL">Nagaland</option>
+                                        <option value="OR">Odisha</option>
+                                        <option value="PY">Puducherry</option>
+                                        <option value="PB">Punjab</option>
+                                        <option value="RJ">Rajasthan</option>
+                                        <option value="SK">Sikkim</option>
+                                        <option value="TN">Tamil Nadu</option>
+                                        <option value="TS">Telangana</option>
+                                        <option value="TR">Tripura</option>
+                                        <option value="UP">Uttar Pradesh</option>
+                                        <option value="UK">Uttarakhand</option>
+                                        <option value="WB">West Bengal</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="pincode">PIN Code *</label>
+                                    <input type="text" id="pincode" name="pincode" pattern="[0-9]{6}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="country">Country</label>
+                                    <input type="text" id="country" name="country" value="India" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Information -->
+                        <div class="form-section">
+                            <h3>Payment Information</h3>
+                            <div class="payment-methods">
+                                <div class="payment-method">
+                                    <input type="radio" id="credit-card" name="payment-method" value="credit-card" checked>
+                                    <label for="credit-card">Credit/Debit Card</label>
+                                </div>
+                                <div class="payment-method">
+                                    <input type="radio" id="upi" name="payment-method" value="upi">
+                                    <label for="upi">UPI</label>
+                                </div>
+                                <div class="payment-method">
+                                    <input type="radio" id="cod" name="payment-method" value="cod">
+                                    <label for="cod">Cash on Delivery</label>
+                                </div>
+                            </div>
+                            
+                            <div id="card-details" class="payment-details">
+                                <div class="form-group">
+                                    <label for="card-number">Card Number *</label>
+                                    <input type="text" id="card-number" name="cardNumber" placeholder="1234 5678 9012 3456">
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="expiry">Expiry Date *</label>
+                                        <input type="text" id="expiry" name="expiry" placeholder="MM/YY">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cvv">CVV *</label>
+                                        <input type="text" id="cvv" name="cvv" placeholder="123">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="card-name">Name on Card *</label>
+                                    <input type="text" id="card-name" name="cardName">
+                                </div>
+                            </div>
+                            
+                            <div id="upi-details" class="payment-details" style="display: none;">
+                                <div class="form-group">
+                                    <label for="upi-id">UPI ID *</label>
+                                    <input type="text" id="upi-id" name="upiId" placeholder="yourname@paytm">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Order Notes -->
+                        <div class="form-section">
+                            <h3>Additional Information</h3>
+                            <div class="form-group">
+                                <label for="order-notes">Order Notes (Optional)</label>
+                                <textarea id="order-notes" name="orderNotes" rows="3" placeholder="Any special instructions for your order..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div class="form-section">
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="terms" name="terms" required>
+                                    I agree to the <a href="#" target="_blank">Terms and Conditions</a> and <a href="#" target="_blank">Privacy Policy</a>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <div class="summary-card">
+                        <h3>Order Summary</h3>
+                        
+                        <div id="checkout-items">
+                            <!-- Order items will be loaded here -->
+                        </div>
+                        
+                        <div class="summary-totals">
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span id="checkout-subtotal">₹0</span>
+                            </div>
+                            
+                            <div class="summary-row">
+                                <span>Shipping</span>
+                                <span id="checkout-shipping">₹99</span>
+                            </div>
+                            
+                            <div class="summary-row">
+                                <span>Tax (18% GST)</span>
+                                <span id="checkout-tax">₹0</span>
+                            </div>
+                            
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span id="checkout-total">₹0</span>
+                            </div>
+                        </div>
+                        
+                        <div class="checkout-actions">
+                            <button type="submit" form="checkout-form" class="btn">
+                                Place Order
+                            </button>
+                            <a href="cart.html" class="btn ghost">Back to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RKU Canteen Management</h3>
+                    <p class="muted">Delicious meals, quick service.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p class="muted">Email: hello@rkucanteen.local</p>
+                    <p class="muted">Phone: +91 98765 43210</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="muted">&copy; 2025 RKU Canteen Management. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/validation.js"></script>
+    <script>
+    // Render order summary from localStorage and clear on place order
+    document.addEventListener('DOMContentLoaded', function(){
+      const list = JSON.parse(localStorage.getItem('cart') || '[]');
+      const itemsEl = document.getElementById('checkout-items');
+      const subtotalEl = document.getElementById('checkout-subtotal');
+      const taxEl = document.getElementById('checkout-tax');
+      const totalEl = document.getElementById('checkout-total');
+      let subtotal = 0;
+      itemsEl.innerHTML = list.map(i => { subtotal += i.price * i.qty; return `
+        <div class="checkout-item">
+          <div class="checkout-item-details">
+            <img src="${i.image}" alt="${i.name}">
+            <div>
+              <div><strong>${i.name}</strong></div>
+              <div class="muted">Qty: ${i.qty}</div>
+            </div>
+          </div>
+          <div>₹${i.price * i.qty}</div>
+        </div>`; }).join('');
+      subtotalEl.textContent = `₹${subtotal}`;
+      const shipping = 99;
+      const tax = Math.round(subtotal * 0.18);
+      taxEl.textContent = `₹${tax}`;
+      totalEl.textContent = `₹${subtotal + shipping + tax}`;
+
+      const form = document.getElementById('checkout-form');
+      form && form.addEventListener('submit', function(e){
+        e.preventDefault();
+        localStorage.removeItem('cart');
+        window.location.href = 'menu.html';
+      });
+    });
+    </script>
+</body>
+</html>

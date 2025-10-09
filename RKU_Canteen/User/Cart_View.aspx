@@ -1,0 +1,225 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User/Site1.Master" AutoEventWireup="true" CodeBehind="Cart_View.aspx.cs" Inherits="RKU_Canteen.User.Cart_View" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content5" runat="server" contentplaceholderid="ContentPlaceHolder2">
+                 <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Fresh Meals for Everyone</h1>
+                    <p class="muted">
+                        Delicious, affordable canteen food prepared daily. Quick service and great taste.</p>
+                    <div class="hero-buttons">
+                        <a href="menu.html" class="btn">View Menu</a> <a href="pages.html" class="btn ghost">Explore Pages</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&h=400&fit=crop" alt="Canteen Dishes">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Dishes -->
+    <center>
+    <h1>Product Added to cart</h1>
+        <asp:GridView ID="GridView1" runat="server">
+
+        
+        <Columns>
+            <asp:TemplateField HeaderText="Product Image">
+                <ItemTemplate>
+                    <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Prod_Image") %>' height="100" Width="100"/>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Product Name">
+                <ItemTemplate>
+                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("Prod_Name") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Product Price">
+                <ItemTemplate>
+                    <asp:Label ID="Label2" runat="server" Text='<%# Eval("Prod_Price") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Product Quantity">
+                <ItemTemplate>
+                    <asp:Label ID="Label3" runat="server" Text='<%# Eval("Prod_Quantity") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+        </Columns>
+
+        </asp:GridView>
+<%--    <asp:GridView runat="server" ID="gvCart" AutoGenerateColumns="False" OnSelectedIndexChanged="gvCart_SelectedIndexChanged">--%>
+       
+   <%-- </asp:GridView>--%>
+</center>
+
+   <%-- <section id="featured" class="featured">
+        <div class="container">
+            <h2>Featured Dishes</h2>
+            <div class="grid products-grid">
+                <div class="card product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&h=200&fit=crop" alt="Burger">
+                    </div>
+                    <div class="product-info">
+                        <h3>Veggie Burger</h3>
+                        <p class="muted">
+                            Crispy veg patty</p>
+                        <div class="product-price">
+                            ₹99</div>
+                        <div class="quantity-selector" style="margin:.5rem 0 0.75rem;">
+                            <label for="qty-1" style="font-size:.9rem; color:#6b7280; margin-right:.5rem;">
+                            Qty</label>
+                            <input id="qty-1" type="number" value="1" min="1" max="10" style="width:70px; padding:.35rem; border:1px solid #d1d5db; border-radius:6px;">
+                        </div>
+                        <div class="product-actions">
+                            <a href="product-detail.html?id=1" class="btn ghost">View Details</a> <a href="cart.html" class="btn add-to-cart" data-target="qty-1">Add 1 to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=300&h=200&fit=crop" alt="Pizza">
+                    </div>
+                    <div class="product-info">
+                        <h3>Classic Cheese Pizza</h3>
+                        <p class="muted">
+                            Cheesy goodness</p>
+                        <div class="product-price">
+                            ₹169</div>
+                        <div class="quantity-selector" style="margin:.5rem 0 0.75rem;">
+                            <label for="qty-2" style="font-size:.9rem; color:#6b7280; margin-right:.5rem;">
+                            Qty</label>
+                            <input id="qty-2" type="number" value="1" min="1" max="10" style="width:70px; padding:.35rem; border:1px solid #d1d5db; border-radius:6px;">
+                        </div>
+                        <div class="product-actions">
+                            <a href="product-detail.html?id=2" class="btn ghost">View Details</a> <a href="cart.html" class="btn add-to-cart" data-target="qty-2">Add 1 to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=300&h=200&fit=crop" alt="Breakfast Bowl">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hakka Noodles</h3>
+                        <p class="muted">
+                            Stir-fried veg noodles</p>
+                        <div class="product-price">
+                            ₹119</div>
+                        <div class="quantity-selector" style="margin:.5rem 0 0.75rem;">
+                            <label for="qty-3" style="font-size:.9rem; color:#6b7280; margin-right:.5rem;">
+                            Qty</label>
+                            <input id="qty-3" type="number" value="1" min="1" max="10" style="width:70px; padding:.35rem; border:1px solid #d1d5db; border-radius:6px;">
+                        </div>
+                        <div class="product-actions">
+                            <a href="product-detail.html?id=3" class="btn ghost">View Details</a> <a href="cart.html" class="btn add-to-cart" data-target="qty-3">Add 1 to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?w=300&h=200&fit=crop" alt="Dessert">
+                    </div>
+                    <div class="product-info">
+                        <h3>Paneer Tikka Pizza</h3>
+                        <p class="muted">
+                            Smoky paneer cubes</p>
+                        <div class="product-price">
+                            ₹229</div>
+                        <div class="quantity-selector" style="margin:.5rem 0 0.75rem;">
+                            <label for="qty-4" style="font-size:.9rem; color:#6b7280; margin-right:.5rem;">
+                            Qty</label>
+                            <input id="qty-4" type="number" value="1" min="1" max="10" style="width:70px; padding:.35rem; border:1px solid #d1d5db; border-radius:6px;">
+                        </div>
+                        <div class="product-actions">
+                            <a href="product-detail.html?id=4" class="btn ghost">View Details</a> <a href="cart.html" class="btn add-to-cart" data-target="qty-4">Add 1 to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>--%>
+</asp:Content>
+<asp:Content ID="Content6" runat="server" contentplaceholderid="ContentPlaceHolder3">
+                <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RKU Canteen Management</h3>
+                    <p class="muted">
+                        Delicious meals, quick service.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p class="muted">
+                        Email: hello@rkucanteen.local</p>
+                    <p class="muted">
+                        Phone: +91 98765 43210</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="muted">
+                    &copy; 2025 RKU Canteen Management. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+<script>
+  // Update Add to Cart buttons to reflect selected quantity (e.g., 3 → 4)
+  document.addEventListener('DOMContentLoaded', function() {
+    // Update cart badge on load
+    try {
+      const badge = document.getElementById('cart-count');
+      if (badge) {
+        const c = JSON.parse(localStorage.getItem('cart')||'[]');
+        const n = c.reduce((s,i)=>s+(i.qty||0),0);
+        badge.textContent = n;
+      }
+    } catch(_){}
+    document.querySelectorAll('.add-to-cart').forEach(function(btn){
+      const targetId = btn.getAttribute('data-target');
+      const input = document.getElementById(targetId);
+      function sync() { const q = Math.max(1, Math.min(10, parseInt(input.value||'1',10))); btn.textContent = `Add ${q} to Cart`; }
+      if (input) {
+        input.addEventListener('input', sync);
+        input.addEventListener('change', sync);
+        sync();
+      }
+
+      // Save to localStorage and jump to cart
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        const card = btn.closest('.product-card');
+        const name = card.querySelector('h3')?.textContent?.trim() || 'Item';
+        const priceText = card.querySelector('.product-price')?.textContent?.replace(/[^0-9]/g,'') || '0';
+        const price = parseInt(priceText, 10) || 0;
+        const img = card.querySelector('.product-image img')?.src || '';
+        const qty = parseInt((input && input.value) || '1', 10) || 1;
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        const existing = cart.find(i => i.name === name);
+        if (existing) { existing.qty += qty; } else { cart.push({ name, price, qty, image: img }); }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem('lastAdded', name);
+        window.location.href = 'cart.html';
+      });
+    });
+  });
+</script>
+
+            </asp:Content>
+

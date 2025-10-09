@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin System Test - RKU Canteen Management</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="topbar">
+        <div class="container">
+            <nav class="nav">
+                <div class="left">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon">🚗</span>
+                        <span class="logo-text">RKU Canteen Management</span>
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="products.html" class="nav-link">Products</a>
+                    <a href="categories.html" class="nav-link">Categories</a>
+                    <a href="cart.html" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i> Cart <span id="cart-count" class="badge">0</span>
+                    </a>
+                    
+                    <!-- User Authentication Section -->
+                    <div class="user-auth" id="user-auth">
+                        <!-- Show when not logged in -->
+                        <div class="auth-links" id="auth-links">
+                            <a href="user-login.html" class="nav-link">
+                                <i class="fas fa-user"></i> Login
+                            </a>
+                            <a href="user-register.html" class="nav-link">
+                                <i class="fas fa-user-plus"></i> Register
+                            </a>
+                        </div>
+                        
+                        <!-- Show when logged in -->
+                        <div class="user-dropdown" id="user-dropdown" style="display: none;">
+                            <button class="user-menu-btn" id="user-menu-btn">
+                                <i class="fas fa-user-circle"></i>
+                                <span class="user-name" id="user-name">User</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="user-menu" id="user-menu">
+                                <div class="user-menu-header">
+                                    <div class="user-avatar">
+                                        <i class="fas fa-user-circle"></i>
+                                    </div>
+                                    <div class="user-info">
+                                        <strong id="menu-user-name">User Name</strong>
+                                        <div class="muted" id="menu-user-email">user@example.com</div>
+                                    </div>
+                                </div>
+                                <div class="user-menu-items">
+                                    <a href="user-profile.html" class="user-menu-item">
+                                        <i class="fas fa-user"></i>
+                                        <span>My Profile</span>
+                                    </a>
+                                    <a href="user-profile.html#orders" class="user-menu-item">
+                                        <i class="fas fa-box"></i>
+                                        <span>My Orders</span>
+                                    </a>
+                                    <a href="user-profile.html#wishlist" class="user-menu-item">
+                                        <i class="fas fa-heart"></i>
+                                        <span>Wishlist</span>
+                                    </a>
+                                    <div class="menu-divider"></div>
+                                    <button class="user-menu-item logout-btn" onclick="logout()">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        <span>Logout</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Admin Link (hidden for regular users) -->
+                    <a href="admin-login.html" class="nav-link admin-only" id="admin-link" style="display: none;">Admin</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Test Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <div class="auth-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h1>Admin System Test</h1>
+                        <p class="muted">Test admin authentication and navigation across all pages</p>
+                    </div>
+
+                    <div class="test-section" style="margin: 2rem 0;">
+                        <h3>Admin Authentication Test</h3>
+                        <div class="test-buttons" style="margin: 1rem 0; display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <button class="btn" onclick="testAdminLogin()">Test Admin Login</button>
+                            <button class="btn ghost" onclick="testAdminLogout()">Test Admin Logout</button>
+                            <button class="btn ghost" onclick="checkAdminStatus()">Check Admin Status</button>
+                        </div>
+                    </div>
+
+                    <div class="test-section" style="margin: 2rem 0;">
+                        <h3>Navigation Test</h3>
+                        <div class="test-buttons" style="margin: 1rem 0; display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="index.html" class="btn ghost">Test Home Page</a>
+                            <a href="products.html" class="btn ghost">Test Products Page</a>
+                            <a href="admin-dashboard.html" class="btn ghost">Test Admin Dashboard</a>
+                        </div>
+                    </div>
+
+                    <div id="admin-status" style="margin: 2rem 0; padding: 1.5rem; background: #f8f9fa; border-radius: 8px;">
+                        <h3>Current Admin Status:</h3>
+                        <div id="status-content">
+                            <p id="status-text">Loading...</p>
+                        </div>
+                    </div>
+
+                    <div class="demo-info" style="margin: 2rem 0;">
+                        <h4><i class="fas fa-info-circle"></i> Admin Credentials</h4>
+                        <div class="demo-accounts">
+                            <div class="demo-account">
+                                <strong>Username:</strong> <code>admin</code><br>
+                                <strong>Password:</strong> <code>password123</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-list" style="margin: 2rem 0;">
+                        <h4>Admin Features Available:</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i> Admin authentication across all pages</li>
+                            <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i> Dynamic admin navigation visibility</li>
+                            <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i> Product management (Add/Edit/Delete)</li>
+                            <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i> Dashboard with statistics</li>
+                            <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i> Search and filter products</li>
+                            <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: #22c55e; margin-right: 0.5rem;"></i> Session management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RKU Canteen Management</h3>
+                    <p class="muted">Your trusted source for quality automotive parts.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p class="muted">Email: hello@rkucanteen.local</p>
+                    <p class="muted">Phone: +91 98765 43210</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="muted">&copy; 2026 RKU Canteen Management. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/validation.js"></script>
+</body>
+</html>

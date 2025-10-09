@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Canteen</title>
+    <link rel="icon" type="image/svg+xml" href="images/icons/favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="topbar">
+        <div class="container">
+            <nav class="nav">
+                <div class="left">
+                    <a href="index.html" class="logo">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=40&h=40&fit=crop" alt="RKU Canteen Management" style="height: 40px; border-radius: 8px;">
+                        <span class="logo-text">RKU Canteen Management</span>
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="menu.html" class="nav-link">Menu</a>
+                    <a href="contact.html" class="nav-link active">Contact</a>
+                    <a href="pages.html" class="nav-link">Pages</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Contact Us</h1>
+                    <p class="muted">Questions about orders, catering, or feedback? We’re here to help.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="contact-content">
+        <div class="container">
+            <div class="grid contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-section">
+                    <div class="card">
+                        <h2>Send us a Message</h2>
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="product-inquiry">Product Inquiry</option>
+                                    <option value="order-support">Order Support</option>
+                                    <option value="technical-help">Technical Help</option>
+                                    <option value="warranty-claim">Warranty Claim</option>
+                                    <option value="partnership">Partnership Opportunity</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" rows="6" placeholder="Please describe your inquiry in detail..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="contact-info-section">
+                    <div class="contact-info">
+                        <h2>Get in Touch</h2>
+                        <p class="muted">We're here to help! Reach out to us through any of the following channels:</p>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Visit Our Canteen</h3>
+                                <p>123 Campus Canteen Road<br>
+                                Mumbai, Maharashtra 400001<br>
+                                India</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Call Us</h3>
+                                <p>Main: +91 98765 43210<br>
+                                Support: +91 98765 43211<br>
+                                Mon-Sat: 9:00 AM - 7:00 PM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Email Us</h3>
+                                <p>General: hello@canteen.local<br>
+                                Support: support@canteen.local<br>
+                                Catering: catering@canteen.local</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Business Hours</h3>
+                                <p>Monday - Friday: 9:00 AM - 7:00 PM<br>
+                                Saturday: 9:00 AM - 5:00 PM<br>
+                                Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Section -->
+                    <div class="faq-section">
+                        <h3>Frequently Asked Questions</h3>
+                        <div class="faq-item">
+                            <h4>How long does shipping take?</h4>
+                            <p>Standard delivery takes 3-5 business days. Express delivery is available for urgent orders.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Do you offer warranties?</h4>
+                            <p>Yes, all our parts come with manufacturer warranties. Extended warranties are available for select products.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Can I return a part?</h4>
+                            <p>We accept returns within 30 days of purchase for unused parts in original packaging.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2>Find Us</h2>
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <p>Interactive Map Coming Soon</p>
+                    <p class="muted">123 Auto Parts Street, Mumbai, Maharashtra 400001</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RKU Canteen Management</h3>
+                    <p class="muted">Delicious meals, quick service.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p class="muted">Email: hello@rkucanteen.local</p>
+                    <p class="muted">Phone: +91 98765 43210</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                    <p class="muted">&copy; 2025 Canteen. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="js/validation.js"></script>
+</body>
+</html>

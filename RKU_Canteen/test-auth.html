@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Authentication - RKU Canteen Management</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="topbar">
+        <div class="container">
+            <nav class="nav">
+                <div class="left">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon">🚗</span>
+                        <span class="logo-text">RKU Canteen Management</span>
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="products.html" class="nav-link">Products</a>
+                    <a href="categories.html" class="nav-link">Categories</a>
+                    <a href="cart.html" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i> Cart <span id="cart-count" class="badge">0</span>
+                    </a>
+                    
+                    <!-- User Authentication Section -->
+                    <div class="user-auth" id="user-auth">
+                        <!-- Show when not logged in -->
+                        <div class="auth-links" id="auth-links">
+                            <a href="user-login.html" class="nav-link">
+                                <i class="fas fa-user"></i> Login
+                            </a>
+                            <a href="user-register.html" class="nav-link">
+                                <i class="fas fa-user-plus"></i> Register
+                            </a>
+                        </div>
+                        
+                        <!-- Show when logged in -->
+                        <div class="user-dropdown" id="user-dropdown" style="display: none;">
+                            <button class="user-menu-btn" id="user-menu-btn">
+                                <i class="fas fa-user-circle"></i>
+                                <span class="user-name" id="user-name">User</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="user-menu" id="user-menu">
+                                <div class="user-menu-header">
+                                    <div class="user-avatar">
+                                        <i class="fas fa-user-circle"></i>
+                                    </div>
+                                    <div class="user-info">
+                                        <strong id="menu-user-name">User Name</strong>
+                                        <div class="muted" id="menu-user-email">user@example.com</div>
+                                    </div>
+                                </div>
+                                <div class="user-menu-items">
+                                    <a href="user-profile.html" class="user-menu-item">
+                                        <i class="fas fa-user"></i>
+                                        <span>My Profile</span>
+                                    </a>
+                                    <a href="user-profile.html#orders" class="user-menu-item">
+                                        <i class="fas fa-box"></i>
+                                        <span>My Orders</span>
+                                    </a>
+                                    <a href="user-profile.html#wishlist" class="user-menu-item">
+                                        <i class="fas fa-heart"></i>
+                                        <span>Wishlist</span>
+                                    </a>
+                                    <div class="menu-divider"></div>
+                                    <button class="user-menu-item logout-btn" onclick="logout()">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        <span>Logout</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Admin Link (visible for all users) -->
+                    <a href="admin-login.html" class="nav-link" id="admin-link">
+                        <i class="fas fa-user-shield"></i> Admin
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Test Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <h1>Authentication Test</h1>
+                        <p class="muted">Test login/logout functionality</p>
+                    </div>
+
+                    <div class="test-buttons" style="margin: 20px 0;">
+                        <button class="btn" onclick="testLogin()" style="margin: 10px;">Test Login</button>
+                        <button class="btn ghost" onclick="testLogout()" style="margin: 10px;">Test Logout</button>
+                        <button class="btn ghost" onclick="checkAuthStatus()" style="margin: 10px;">Check Status</button>
+                    </div>
+
+                    <div id="auth-status" style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                        <h3>Current Status:</h3>
+                        <p id="status-text">Loading...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/validation.js"></script>
+</body>
+</html>

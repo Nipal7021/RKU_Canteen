@@ -1,0 +1,290 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Site2.Master" AutoEventWireup="true" CodeBehind="Admin_DeskBord.aspx.cs" Inherits="RKU_Canteen.Admin.Admin_DeskBord" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content5" runat="server" contentplaceholderid="ContentPlaceHolder1">
+                <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin Dashboard - Canteen</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+    <!-- Navigation -->
+        <div class="topbar">
+            <div class="container">
+                <nav class="nav">
+                    <div class="left">
+                        <a href="Admin_DeskBord.aspx" class="logo"><span class="logo-text"></span> </a>
+                    </div>
+                    <div class="nav-links">
+                        <a href="Admin_DeskBord.aspx" class="nav-link">DeskBord</a> <a href="Admin_Login.aspx" class="nav-link">Login</a>  <a href="Admin_menu.aspx" class="nav-link">Menu</a> <a href="Admin_Register.aspx" class="nav-link">Register</a>  <a href="Admin_add_food.aspx" class="nav-link">Add Food</a>  <a href="Admin_add_item.aspx" class="nav-link">Add Item</a>
+                    
+                    <!-- Admin Authentication Section -->
+                    <!-- Admin Link (visible for all users) -->
+                        <%--<a href="admin-login.html" class="nav-link" id="admin-link"><i class="fas fa-user-shield"></i>Admin </a>--%>
+                        <div class="user-auth" id="user-auth">
+                            <div class="user-dropdown" style="display: block;">
+                                <button class="user-menu-btn" id="user-menu-btn">
+                                   <%-- <i class="fas fa-user-shield"></i><span class="user-name">Admin</span> <i class="fas fa-chevron-down"></i>--%>
+                                </button>
+                                <div class="user-menu" id="user-menu">
+                                    <div class="user-menu-header">
+                                        <div class="user-avatar">
+                                            <i class="fas fa-user-shield"></i>
+                                        </div>
+                                        <div class="user-info">
+                                            <strong>Administrator</strong>
+                                            <div class="muted">
+                                                Admin Dashboard</div>
+                                        </div>
+                                    </div>
+                                    <div class="user-menu-items">
+                                        <a href="admin-dashboard.html" class="user-menu-item"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span> </a>
+                                        <div class="menu-divider">
+                                        </div>
+                                        <button class="user-menu-item logout-btn" onclick="adminLogout()">
+                                            <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+</asp:Content>
+<asp:Content ID="Content6" runat="server" contentplaceholderid="ContentPlaceHolder2">
+                <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Admin Dashboard</h1>
+            <p class="muted">Manage menu, orders and view analytics</p>
+        </div>
+    </section>
+
+    <!-- Dashboard Stats -->
+    <section class="dashboard-stats">
+        <div class="container">
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">📦</div>
+                    <div class="stat-content">
+                        <h3 id="total-products">0</h3>
+                        <p class="muted">Menu Items</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🛒</div>
+                    <div class="stat-content">
+                        <h3 id="total-orders">156</h3>
+                        <p class="muted">Total Orders</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-content">
+                        <h3 id="total-revenue">₹2,45,890</h3>
+                        <p class="muted">Total Revenue</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-content">
+                        <h3 id="total-customers">89</h3>
+                        <p class="muted">Total Customers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%--<!-- Add Product Section -->
+    <section class="admin-section">
+        <div class="container">
+            <div class="admin-section">
+                <div class="section-header">
+                    <h2>Add New Menu Item</h2>
+                    <button class="btn ghost" onclick="toggleAddForm()">Toggle Form</button>
+                </div>
+                
+                    <form id="add-product-form" class="add-product-form" style="display: none;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product-name">Item Name *</label>
+                            <input type="text" id="product-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-category">Category *</label>
+                            <select id="product-category" name="category" required>
+                                <option value="">Select Category</option>
+                                <option value="pizza">Pizza</option>
+                                <option value="burger">Burger</option>
+                                <option value="chinese">Chinese</option>
+                                <option value="punjabi">Punjabi</option>
+                                <option value="gujarati">Gujarati</option>
+                                <option value="cold-drinks">Cold Drinks</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product-price">Price (₹) *</label>
+                            <input type="number" id="product-price" name="price" min="0" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-stock">Stock Quantity *</label>
+                            <input type="number" id="product-stock" name="stock" min="0" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-image">Image URL *</label>
+                        <input type="url" id="product-image" name="image" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-description">Description</label>
+                        <textarea id="product-description" name="description" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn">Add Product</button>
+                        <button type="reset" class="btn ghost">Reset Form</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Management -->
+    <section class="admin-section">
+        <div class="container">
+            <div class="admin-section">
+                <div class="section-header">
+                    <h2>Manage Menu</h2>
+                    <div class="section-actions">
+                        <input type="text" id="search-products" placeholder="Search products..." style="padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 8px;">
+                        <button class="btn ghost" onclick="refreshProducts()">Refresh</button>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-table-body">
+                            <!-- Products will be dynamically loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Edit Product Modal -->
+    <div id="edit-modal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Product</h3>
+                <button class="modal-close" onclick="closeEditModal()">&times;</button>
+            </div>
+            <form id="edit-product-form">
+                <input type="hidden" id="edit-product-id">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-product-name">Product Name *</label>
+                        <input type="text" id="edit-product-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-product-category">Category *</label>
+                        <select id="edit-product-category" name="category" required>
+                            <option value="">Select Category</option>
+                            <option value="engine">Engine Parts</option>
+                            <option value="brake">Brake System</option>
+                            <option value="suspension">Suspension</option>
+                            <option value="lighting">Lighting</option>
+                            <option value="electrical">Electrical</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-product-price">Price (₹) *</label>
+                        <input type="number" id="edit-product-price" name="price" min="0" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-product-stock">Stock Quantity *</label>
+                        <input type="number" id="edit-product-stock" name="stock" min="0" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-product-image">Image URL *</label>
+                    <input type="url" id="edit-product-image" name="image" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-product-description">Description</label>
+                    <textarea id="edit-product-description" name="description" rows="3"></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn">Update Product</button>
+                    <button type="button" class="btn ghost" onclick="closeEditModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>--%>
+            </asp:Content>
+<asp:Content ID="Content7" runat="server" contentplaceholderid="ContentPlaceHolder3">
+                 <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RKU Canteen Management</h3>
+                    <p class="muted">
+                        Delicious meals, quick service.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p class="muted">
+                        Email: hello@rkucanteen.local</p>
+                    <p class="muted">
+                        Phone: +91 98765 43210</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="muted">
+                    &copy; 2025 RKU Canteen Management. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/validation.js"></script>
+</body>
+</html>
+
+            </asp:Content>
+

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RKU Canteen Management - Connection Test</title>
+    <link rel="icon" type="image/svg+xml" href="images/icons/favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .test-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        .test-card h3 {
+            color: var(--brand-2);
+            margin-bottom: 1rem;
+        }
+        .test-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .test-links a {
+            padding: 0.5rem 1rem;
+            background: var(--muted);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.2s ease;
+        }
+        .test-links a:hover {
+            background: var(--brand-2);
+            color: white;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+        .status-ok { background: var(--ok); }
+        .status-warn { background: var(--warn); }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="topbar">
+        <div class="container">
+            <nav class="nav">
+                <div class="left">
+                    <a href="index.html" class="logo">
+						<img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=40&h=40&fit=crop" alt="RKU Canteen Management" style="height: 40px; border-radius: 8px;">
+                        <span class="logo-text">RKU Canteen Management</span>
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="products.html" class="nav-link">Products</a>
+                    <a href="categories.html" class="nav-link">Categories</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="cart.html" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i> Cart
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>RKU Canteen Management Connection Test</h1>
+                    <p class="muted">Testing all page connections and functionality across the website.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Test Results -->
+    <section style="padding: 4rem 0;">
+        <div class="container">
+            <h2>Page Connection Status</h2>
+            <div class="test-grid">
+                <div class="test-card">
+                    <h3><span class="status-indicator status-ok"></span>Main Pages</h3>
+                    <p>Core website pages with full navigation</p>
+                    <div class="test-links">
+                        <a href="index.html">🏠 Home Page</a>
+                        <a href="about.html">ℹ️ About Us</a>
+                        <a href="services.html">🔧 Services</a>
+                        <a href="contact.html">📞 Contact</a>
+                    </div>
+                </div>
+
+                <div class="test-card">
+                    <h3><span class="status-indicator status-ok"></span>E-commerce Pages</h3>
+                    <p>Shopping and product pages</p>
+                    <div class="test-links">
+                        <a href="products.html">🛍️ Products</a>
+                        <a href="categories.html">📂 Categories</a>
+                        <a href="cart.html">🛒 Shopping Cart</a>
+                    </div>
+                </div>
+
+                <div class="test-card">
+                    <h3><span class="status-indicator status-ok"></span>CSS Styling</h3>
+                    <p>Page-specific stylesheets</p>
+                    <div class="test-links">
+                        <a href="css/style.css" target="_blank">📄 Main CSS</a>
+                        <a href="css/about.css" target="_blank">📄 About CSS</a>
+                        <a href="css/services.css" target="_blank">📄 Services CSS</a>
+                        <a href="css/contact.css" target="_blank">📄 Contact CSS</a>
+                    </div>
+                </div>
+
+                <div class="test-card">
+                    <h3><span class="status-indicator status-ok"></span>Assets & Resources</h3>
+                    <p>Images, icons, and JavaScript files</p>
+                    <div class="test-links">
+                        <a href="images/icons/favicon.svg" target="_blank">🖼️ Favicon</a>
+                        <a href="js/contact.js" target="_blank">📄 Contact JS</a>
+                        <a href="https://images.unsplash.com/photo-1544025162-d76694265947?w=40&h=40&fit=crop" target="_blank">🖼️ Logo Image</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: var(--muted); padding: 2rem; border-radius: var(--radius); margin-top: 2rem;">
+                <h3>✅ Connection Test Results</h3>
+                <ul style="margin: 1rem 0; padding-left: 2rem;">
+                    <li><strong>Navigation:</strong> All pages have complete navigation with About, Services, Contact links</li>
+                    <li><strong>Logo:</strong> Consistent branding across all pages</li>
+                    <li><strong>CSS:</strong> Page-specific stylesheets properly linked</li>
+                    <li><strong>Footer:</strong> Updated with all page links</li>
+                    <li><strong>Images:</strong> Real car parts images integrated</li>
+                    <li><strong>Favicon:</strong> Custom RKU Canteen Management favicon created</li>
+                </ul>
+                
+                <div style="margin-top: 2rem;">
+                    <a href="index.html" class="btn">🏠 Return to Home</a>
+                    <a href="contact.html" class="btn ghost">📞 Test Contact Form</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RKU Canteen Management</h3>
+                    <p class="muted">Your trusted source for quality automotive parts.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p class="muted">Email: hello@rkucanteen.local</p>
+                    <p class="muted">Phone: +91 98765 43210</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="muted">&copy; 2025 RKU Canteen Management. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

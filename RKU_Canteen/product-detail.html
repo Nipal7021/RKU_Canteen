@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Details - RKU Canteen Management</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="topbar">
+        <div class="container">
+            <nav class="nav">
+                <div class="left">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon">🚗</span>
+                        <span class="logo-text">RKU Canteen Management</span>
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="products.html" class="nav-link">Products</a>
+                    <a href="categories.html" class="nav-link">Categories</a>
+                    <a href="cart.html" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i> Cart <span id="cart-count" class="badge">0</span>
+                    </a>
+                    
+                    <!-- User Authentication Section -->
+                    <div class="user-auth" id="user-auth">
+                        <!-- Show when not logged in -->
+                        <div class="auth-links" id="auth-links">
+                            <a href="user-login.html" class="nav-link">
+                                <i class="fas fa-user"></i> Login
+                            </a>
+                            <a href="user-register.html" class="nav-link">
+                                <i class="fas fa-user-plus"></i> Register
+                            </a>
+                        </div>
+                        
+                        <!-- Show when logged in -->
+                        <div class="user-dropdown" id="user-dropdown" style="display: none;">
+                            <button class="user-menu-btn" id="user-menu-btn">
+                                <i class="fas fa-user-circle"></i>
+                                <span class="user-name" id="user-name">User</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="user-menu" id="user-menu">
+                                <div class="user-menu-header">
+                                    <div class="user-avatar">
+                                        <i class="fas fa-user-circle"></i>
+                                    </div>
+                                    <div class="user-info">
+                                        <strong id="menu-user-name">User Name</strong>
+                                        <div class="muted" id="menu-user-email">user@example.com</div>
+                                    </div>
+                                </div>
+                                <div class="user-menu-items">
+                                    <a href="user-profile.html" class="user-menu-item">
+                                        <i class="fas fa-user"></i>
+                                        <span>My Profile</span>
+                                    </a>
+                                    <a href="user-profile.html#orders" class="user-menu-item">
+                                        <i class="fas fa-box"></i>
+                                        <span>My Orders</span>
+                                    </a>
+                                    <a href="user-profile.html#wishlist" class="user-menu-item">
+                                        <i class="fas fa-heart"></i>
+                                        <span>Wishlist</span>
+                                    </a>
+                                    <div class="menu-divider"></div>
+                                    <button class="user-menu-item logout-btn" onclick="logout()">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        <span>Logout</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Admin Link (visible for all users) -->
+                    <a href="admin-login.html" class="nav-link" id="admin-link">
+                        <i class="fas fa-user-shield"></i> Admin
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <p class="muted">
+                <a href="index.html">Home</a> > 
+                <a href="products.html">Products</a> > 
+                <span id="product-category">Loading...</span> > 
+                <span id="product-name">Loading...</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Product Detail -->
+    <section class="product-detail">
+        <div class="container">
+            <div class="product-detail-grid">
+                <div class="product-image-section">
+                    <div class="main-image">
+                        <img id="main-product-image" src="" alt="Product Image">
+                    </div>
+                </div>
+                
+                <div class="product-info-section">
+                    <div class="product-header">
+                        <h1 id="detail-product-name">Loading...</h1>
+                        <p class="muted" id="detail-product-category">Loading...</p>
+                        <div class="product-rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="muted">(4.8/5 - 124 reviews)</span>
+                        </div>
+                    </div>
+
+                    <div class="product-pricing">
+                        <div class="price-section">
+                            <span class="current-price" id="detail-product-price">₹0</span>
+                            <span class="original-price muted">₹3,999</span>
+                            <span class="discount-badge">25% OFF</span>
+                        </div>
+                        <p class="muted">Inclusive of all taxes</p>
+                    </div>
+
+                    <div class="product-description">
+                        <h3>Product Description</h3>
+                        <p id="product-description">
+                            High-quality automotive part designed for optimal performance and durability. 
+                            Manufactured using premium materials and tested to meet industry standards.
+                        </p>
+                        
+                        <div class="product-features">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>Premium quality materials</li>
+                                <li>Easy installation</li>
+                                <li>Long-lasting durability</li>
+                                <li>Compatible with multiple vehicle models</li>
+                                <li>1-year warranty included</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <label for="quantity">Quantity:</label>
+                            <div class="quantity-controls">
+                                <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                                <input type="number" id="quantity" value="1" min="1" max="10">
+                                <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <button class="btn" id="add-to-cart-btn" onclick="addToCartFromDetail()">
+                                Add to Cart
+                            </button>
+                            <button class="btn ok" onclick="buyNow()">
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-info-tabs">
+                        <div class="tab-headers">
+                            <button class="tab-header active" onclick="showTab('specifications')">Specifications</button>
+                            <button class="tab-header" onclick="showTab('compatibility')">Compatibility</button>
+                            <button class="tab-header" onclick="showTab('warranty')">Warranty</button>
+                        </div>
+                        
+                        <div class="tab-content">
+                            <div id="specifications" class="tab-pane active">
+                                <table class="spec-table">
+                                    <tr><td>Brand</td><td>RKU Canteen</td></tr>
+                                    <tr><td>Material</td><td>High-grade steel/aluminum</td></tr>
+                                    <tr><td>Weight</td><td>2.5 kg</td></tr>
+                                    <tr><td>Dimensions</td><td>25 x 15 x 10 cm</td></tr>
+                                    <tr><td>Color</td><td>Black/Silver</td></tr>
+                                </table>
+                            </div>
+                            
+                            <div id="compatibility" class="tab-pane">
+                                <p>Compatible with the following vehicle models:</p>
+                                <ul>
+                                    <li>Honda City (2014-2023)</li>
+                                    <li>Maruti Swift (2011-2023)</li>
+                                    <li>Hyundai i20 (2015-2023)</li>
+                                    <li>Tata Nexon (2017-2023)</li>
+                                    <li>And many more...</li>
+                                </ul>
+                            </div>
+                            
+                            <div id="warranty" class="tab-pane">
+                                <p><strong>1 Year Comprehensive Warranty</strong></p>
+                                <ul>
+                                    <li>Manufacturing defects covered</li>
+                                    <li>Free replacement within warranty period</li>
+                                    <li>24/7 customer support</li>
+                                    <li>Easy claim process</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="related-products">
+        <div class="container">
+            <h2>Related Products</h2>
+            <div class="grid products-grid" id="related-products-grid">
+                <!-- Related products will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RKU Canteen Management</h3>
+                    <p class="muted">Delicious meals, quick service.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p class="muted">Email: hello@rkucanteen.local</p>
+                    <p class="muted">Phone: +91 98765 43210</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="muted">&copy; 2025 RKU Canteen Management. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/validation.js"></script>
+</body>
+</html>

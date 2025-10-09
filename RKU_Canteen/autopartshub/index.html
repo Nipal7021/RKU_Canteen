@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AutoPartsHub – Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* User login modal styles */
+    #user-login-modal { display:none; position:fixed; z-index:100; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.18); }
+    #user-login-modal.active { display:flex; align-items:center; justify-content:center; }
+    .login-box { background:#fff; color:#222; border-radius:18px; box-shadow:0 8px 32px rgba(0,0,0,0.13); padding:2.2rem 2.5rem; min-width:320px; max-width:90vw; }
+    .login-box h3 { margin-top:0; }
+    .login-box input { width:100%; margin-bottom:1rem; }
+    .login-box .btn { width:100%; }
+    .user-icon { font-size:1.3rem; vertical-align:middle; margin-right:.3rem; }
+    .user-btn { display:inline-flex; align-items:center; gap:.4rem; cursor:pointer; background:transparent; border:none; color:var(--brand-2); font-weight:600; font-size:1rem; }
+    .user-btn:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container nav">
+      <div class="left">
+        <a href="index.html" class="logo"><i></i><span>AutoPartsHub</span></a>
+        <a href="shop.html">Shop</a>
+        <a href="categories.html">Categories</a>
+        <a href="product.html">Product</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin.html">Admin</a>
+      </div>
+      <div class="right row">
+        <!-- User login/logout visual toggle -->
+        <button class="user-btn" id="user-login-btn" onclick="document.getElementById('user-login-modal').classList.add('active');"><span class="user-icon">👤</span>Login</button>
+        <button class="user-btn" id="user-logout-btn" style="display:none;" onclick="document.getElementById('user-login-btn').style.display=''; this.style.display='none';"><span class="user-icon">🚪</span>Logout</button>
+        <a href="cart.html" class="btn cart-indicator">Cart</a>
+        <a href="checkout.html" class="btn ok">Buy Now</a>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="hero">
+      <div>
+        <span class="badge">100% HTML + CSS Prototype</span>
+        <h1>Premium Car Parts Delivered Fast</h1>
+        <p>Welcome to <strong>AutoPartsHub</strong> &mdash; your trusted source for high-quality car parts and accessories. Shop with confidence and enjoy fast shipping, expert support, and unbeatable prices.</p>
+        <div class="spacer"></div>
+        <div class="row">
+          <a class="btn" href="shop.html">Shop Now</a>
+          <a class="btn ghost" href="#features">Why Choose Us?</a>
+        </div>
+      </div>
+      <div class="art card"></div>
+    </div>
+
+    <!-- Features Section -->
+    <div id="features" class="grid" style="grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); margin:2.5rem 0;">
+      <div class="card" style="padding:1.2rem;">
+        <h3>Wide Selection</h3>
+        <p class="muted">From brake pads to lighting, find parts for all major car brands and models.</p>
+      </div>
+      <div class="card" style="padding:1.2rem;">
+        <h3>Fast Delivery</h3>
+        <p class="muted">Get your order delivered quickly with our trusted logistics partners.</p>
+      </div>
+      <div class="card" style="padding:1.2rem;">
+        <h3>Expert Support</h3>
+        <p class="muted">Our team is here to help you choose the right parts for your vehicle.</p>
+      </div>
+      <div class="card" style="padding:1.2rem;">
+        <h3>Secure Checkout</h3>
+        <p class="muted">Shop with peace of mind using our secure and simple checkout process.</p>
+      </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="card" style="padding:1.2rem; margin-bottom:2.5rem;">
+      <h3 style="margin-top:0;">What Our Customers Say</h3>
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1.5rem;">
+        <div>
+          <p>"Super fast delivery and the brake pads fit perfectly! Will order again."</p>
+          <span class="muted">&mdash; Priya S.</span>
+        </div>
+        <div>
+          <p>"Great prices and excellent customer support. Highly recommended."</p>
+          <span class="muted">&mdash; Arjun M.</span>
+        </div>
+        <div>
+          <p>"Easy to use website and checkout. Found exactly what I needed."</p>
+          <span class="muted">&mdash; Kavita R.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="card" style="padding:1.2rem;">
+      <h3 style="margin-top:0;">Frequently Asked Questions</h3>
+      <ul class="muted">
+        <li><strong>Do you offer returns?</strong> &mdash; Yes, we offer a 7-day return policy on all products.</li>
+        <li><strong>How do I track my order?</strong> &mdash; You will receive a tracking link via email after your order ships.</li>
+        <li><strong>Can I get help choosing parts?</strong> &mdash; Absolutely! Contact our support team for expert advice.</li>
+      </ul>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="container">© 2025 AutoPartsHub • HTML + CSS only demonstration</div>
+
+    <!-- User Login Modal (visual only) -->
+    <div id="user-login-modal">
+      <div class="login-box">
+        <h3 style="margin-bottom:1.2rem;">User Login</h3>
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
+        <button class="btn ok">Login</button>
+        <button class="btn ghost" style="margin-top:.7rem;">Cancel</button>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </footer>
+</body>
+</html>

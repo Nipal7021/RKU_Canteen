@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    .dots { display: inline-flex; gap: 4px; margin-left: 6px; }
+    .dot { width: 6px; height: 6px; border-radius: 999px; background: #cbd5e1; }
+  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AutoPartsHub – Categories</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Cart state checkboxes (JS/visual only) -->
+  <input id="p1" class="hidden" type="checkbox" />
+  <input id="p2" class="hidden" type="checkbox" />
+  <input id="p3" class="hidden" type="checkbox" />
+  <input id="p4" class="hidden" type="checkbox" />
+  <div class="topbar">
+    <div class="container nav">
+      <div class="left">
+        <a href="index.html" class="logo"><i></i><span>AutoPartsHub</span></a>
+        <a href="shop.html">Shop</a>
+        <a href="categories.html">Categories</a>
+        <a href="product.html">Product</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin.html">Admin</a>
+      </div>
+      <div class="right row">
+        <a href="cart.html" class="btn cart-indicator">Cart
+          <span class="dots">
+            <span class="dot d1"></span>
+            <span class="dot d2"></span>
+            <span class="dot d3"></span>
+            <span class="dot d4"></span>
+          </span>
+        </a>
+        <a href="checkout.html" class="btn ok">Buy Now</a>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <h2 class="section-title">Browse by Category</h2>
+    <p class="muted" style="margin-bottom:2rem;">Find parts by category. Click a category to view related products and details.</p>
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px,1fr));">
+      <div class="card" style="padding:1.5rem; text-align:center;">
+        <div style="font-size:2.2rem; margin-bottom:.5rem;">🛑</div>
+        <h4>Brakes</h4>
+        <p class="muted">Pads, discs, fluids, calipers, and more for safe stopping power.</p>
+        <a class="btn ghost" href="shop.html">Shop Brakes</a>
+      </div>
+      <div class="card" style="padding:1.5rem; text-align:center;">
+        <div style="font-size:2.2rem; margin-bottom:.5rem;">🧰</div>
+        <h4>Filters</h4>
+        <p class="muted">Oil, air, and cabin filters to keep your engine and air clean.</p>
+        <a class="btn ghost" href="shop.html">Shop Filters</a>
+      </div>
+      <div class="card" style="padding:1.5rem; text-align:center;">
+        <div style="font-size:2.2rem; margin-bottom:.5rem;">🛞</div>
+        <h4>Suspension</h4>
+        <p class="muted">Shocks, struts, control arms, and bushings for a smooth ride.</p>
+        <a class="btn ghost" href="shop.html">Shop Suspension</a>
+      </div>
+      <div class="card" style="padding:1.5rem; text-align:center;">
+        <div style="font-size:2.2rem; margin-bottom:.5rem;">💡</div>
+        <h4>Lighting</h4>
+        <p class="muted">LED, halogen bulbs, and headlight housings for clear vision.</p>
+        <a class="btn ghost" href="shop.html">Shop Lighting</a>
+      </div>
+      <div class="card" style="padding:1.5rem; text-align:center;">
+        <div style="font-size:2.2rem; margin-bottom:.5rem;">🧽</div>
+        <h4>Accessories</h4>
+        <p class="muted">Wipers, mats, covers, and more to keep your car in top shape.</p>
+        <a class="btn ghost" href="shop.html">Shop Accessories</a>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+  <div class="container">© 2025 AutoPartsHub • HTML + CSS only demonstration</div>
+  <script src="main.js"></script>
+  </footer>
+</body>
+</html>

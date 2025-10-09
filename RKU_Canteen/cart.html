@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Cart - RKU Canteen Management</title>
+    <link rel="icon" type="image/svg+xml" href="images/icons/favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="topbar">
+        <div class="container">
+            <nav class="nav">
+                <div class="left">
+                    <a href="index.html" class="logo">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=40&h=40&fit=crop" alt="RKU Canteen Management" style="height: 40px; border-radius: 8px;">
+                        <span class="logo-text">RKU Canteen Management</span>
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="products.html" class="nav-link">Products</a>
+                    <a href="categories.html" class="nav-link">Categories</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="cart.html" class="nav-link active">
+                        <i class="fas fa-shopping-cart"></i> Cart <span id="cart-count" class="badge">0</span>
+                    </a>
+                    
+                    <!-- User Authentication Section -->
+                    <div class="user-auth" id="user-auth">
+                        <!-- Show when not logged in -->
+                        <div class="auth-links" id="auth-links">
+                            <a href="user-login.html" class="nav-link">
+                                <i class="fas fa-user"></i> Login
+                            </a>
+                            <a href="user-register.html" class="nav-link">
+                                <i class="fas fa-user-plus"></i> Register
+                            </a>
+                        </div>
+                        
+                        <!-- Show when logged in -->
+                        <div class="user-dropdown" id="user-dropdown" style="display: none;">
+                            <button class="user-menu-btn" id="user-menu-btn">
+                                <i class="fas fa-user-circle"></i>
+                                <span class="user-name" id="user-name">User</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="user-menu" id="user-menu">
+                                <div class="user-menu-header">
+                                    <div class="user-avatar">
+                                        <i class="fas fa-user-circle"></i>
+                                    </div>
+                                    <div class="user-info">
+                                        <strong id="menu-user-name">User Name</strong>
+                                        <div class="muted" id="menu-user-email">user@example.com</div>
+                                    </div>
+                                </div>
+                                <div class="user-menu-items">
+                                    <a href="user-profile.html" class="user-menu-item">
+                                        <i class="fas fa-user"></i>
+                                        <span>My Profile</span>
+                                    </a>
+                                    <a href="user-profile.html#orders" class="user-menu-item">
+                                        <i class="fas fa-box"></i>
+                                        <span>My Orders</span>
+                                    </a>
+                                    <a href="user-profile.html#wishlist" class="user-menu-item">
+                                        <i class="fas fa-heart"></i>
+                                        <span>Wishlist</span>
+                                    </a>
+                                    <div class="menu-divider"></div>
+                                    <button class="user-menu-item logout-btn" onclick="logout()">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        <span>Logout</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Admin Link (visible for all users) -->
+                    <a href="admin-login.html" class="nav-link" id="admin-link">
+                        <i class="fas fa-user-shield"></i> Admin
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Shopping Cart</h1>
+            <p class="muted">Review your selected items before checkout</p>
+        </div>
+    </section>
+
+    <!-- Cart Content -->
+    <section class="cart-section">
+        <div class="container">
+            <div class="cart-container">
+                <!-- Cart Items -->
+                <div class="cart-items">
+                    <div id="cart-items-container">
+                        <!-- Cart items will be dynamically loaded here -->
+                    </div>
+                    
+                    <!-- Empty Cart State -->
+                    <div id="empty-cart" class="empty-cart" style="display: none;">
+                        <div class="empty-cart-icon">🛒</div>
+                        <h3>Your cart is empty</h3>
+                        <p class="muted">Add some products to get started</p>
+                        <a href="menu.html" class="btn">Continue Shopping</a>
+                    </div>
+                </div>
+
+                <!-- Cart Summary -->
+                <div class="cart-summary">
+                    <div class="summary-card">
+                        <h3>Order Summary</h3>
+                        
+                        <div class="summary-row">
+                            <span>Subtotal (<span id="total-items">0</span> items)</span>
+                            <span id="subtotal">₹0</span>
+                        </div>
+                        
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span id="shipping">₹99</span>
+                        </div>
+                        
+                        <div class="summary-row">
+                            <span>Tax (18% GST)</span>
+                            <span id="tax">₹0</span>
+                        </div>
+                        
+                        <div class="summary-row">
+                            <span>Discount</span>
+                            <span id="discount" class="muted">-₹0</span>
+                        </div>
+                        
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span id="total">₹0</span>
+                        </div>
+                        
+                        <div class="summary-actions">
+                            <button class="btn" id="checkout-btn" onclick="proceedToCheckout()" disabled>
+                                Proceed to Checkout
+                            </button>
+                            <a href="menu.html" class="btn ghost">Continue Shopping</a>
+                        </div>
+                        
+                        <!-- Promo Code -->
+                        <div class="promo-section">
+                            <h4>Have a promo code?</h4>
+                            <div class="promo-input">
+                                <input type="text" id="promo-code" placeholder="Enter promo code">
+                                <button class="btn ghost" onclick="applyPromoCode()">Apply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recently Viewed -->
+    <section class="recently-viewed">
+        <div class="container">
+            <h2>Recently Viewed</h2>
+            <div class="grid products-grid" id="recently-viewed-grid">
+                <!-- Recently viewed products will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RKU Canteen Management</h3>
+                    <p class="muted">Delicious meals, quick service.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p class="muted">Email: hello@rkucanteen.local</p>
+                    <p class="muted">Phone: +91 98765 43210</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="muted">&copy; 2025 RKU Canteen Management. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/validation.js"></script>
+    <script>
+    // Load cart from localStorage and render
+    document.addEventListener('DOMContentLoaded', function() {
+        const container = document.getElementById('cart-items-container');
+        const empty = document.getElementById('empty-cart');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const subtotalEl = document.getElementById('subtotal');
+        const totalItemsEl = document.getElementById('total-items');
+        const badge = document.getElementById('cart-count');
+        const recently = localStorage.getItem('lastAdded');
+
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+        if (cart.length > 0) {
+            empty.style.display = 'none';
+            let subtotal = 0;
+            let totalQty = 0;
+            container.innerHTML = cart.map((item, idx) => {
+                const line = item.price * item.qty;
+                subtotal += line;
+                totalQty += item.qty;
+                return `
+                <div class="cart-item">
+                  <div class="cart-item-image"><img src="${item.image}" alt="${item.name}"></div>
+                  <div class="cart-item-details">
+                    <h4>${item.name}${recently && recently===item.name ? ' <span class="pill" style="margin-left:.5rem;">Just added</span>' : ''}</h4>
+                    <div class="muted">Vegetarian</div>
+                  </div>
+                  <div class="cart-item-price">₹${item.price}</div>
+                  <div class="cart-item-quantity">x ${item.qty}</div>
+                </div>`;
+            }).join('');
+            subtotalEl.textContent = `₹${subtotal}`;
+            totalItemsEl.textContent = totalQty;
+            checkoutBtn.disabled = false;
+            if (badge) badge.textContent = totalQty;
+        } else {
+            empty.style.display = 'block';
+            if (badge) badge.textContent = '0';
+        }
+    });
+
+    function proceedToCheckout() {
+        window.location.href = 'checkout.html';
+    }
+    </script>
+</body>
+</html>

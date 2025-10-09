@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register – AutoPartsHub</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .register-box { background:#fff; color:#222; border-radius:18px; box-shadow:0 8px 32px rgba(0,0,0,0.13); padding:2.2rem 2.5rem; min-width:320px; max-width:90vw; margin:3rem auto; }
+    .register-box h2 { margin-top:0; text-align:center; }
+    .register-box input, .register-box select { width:100%; margin-bottom:1rem; }
+    .register-box .btn { width:100%; }
+    .register-icon { font-size:2.2rem; display:block; text-align:center; margin-bottom:.7rem; }
+    .register-link { text-align:center; margin-top:1.2rem; }
+    .register-link a { color:var(--brand-2); }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container nav">
+      <div class="left">
+        <a href="index.html" class="logo"><i></i><span>AutoPartsHub</span></a>
+        <a href="shop.html">Shop</a>
+        <a href="categories.html">Categories</a>
+        <a href="product.html">Product</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin.html">Admin</a>
+      </div>
+      <div class="right row">
+        <a href="cart.html" class="btn cart-indicator">Cart</a>
+        <a href="checkout.html" class="btn ok">Buy Now</a>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <form class="register-box">
+      <span class="register-icon">📝</span>
+      <h2>Create Your Account</h2>
+      <input type="text" placeholder="Full Name" required />
+      <input type="email" placeholder="Email Address" required />
+      <input type="text" placeholder="Username" required />
+      <input type="password" placeholder="Password" required />
+      <input type="password" placeholder="Confirm Password" required />
+      <button class="btn ok" type="submit" disabled>Register (Demo)</button>
+      <div class="register-link">Already have an account? <a href="index.html">Login</a></div>
+    </form>
+  </div>
+  <footer class="footer">
+    <div class="container">© 2025 AutoPartsHub • HTML + CSS only demonstration</div>
+  </footer>
+</body>
+</html>

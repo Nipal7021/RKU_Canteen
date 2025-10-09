@@ -1,0 +1,247 @@
+/* About Page Specific Styles */
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=1200&h=600&fit=crop') center/cover;
+    opacity: 0.2;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* About Grid */
+.about-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+.about-text {
+    padding: 2rem 0;
+}
+
+.about-text h2 {
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.about-text h3 {
+    color: var(--brand-2);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    color: var(--soft);
+}
+
+.about-image {
+    position: relative;
+}
+
+.about-image img {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+/* Values Section */
+.values-section {
+    background: var(--muted);
+    padding: 4rem 0;
+    margin: 4rem 0;
+}
+
+.values-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.value-card {
+    background: white;
+    padding: 2rem;
+    text-align: center;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.value-icon {
+    font-size: 3rem;
+    color: var(--brand-2);
+    margin-bottom: 1.5rem;
+}
+
+.value-card h3 {
+    color: var(--text);
+    margin-bottom: 1rem;
+}
+
+.value-card p {
+    color: var(--soft);
+    line-height: 1.6;
+}
+
+/* Statistics Section */
+.stats-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, var(--brand-2) 0%, var(--brand) 100%);
+    color: white;
+    text-align: center;
+}
+
+.stats-section h2 {
+    color: white;
+    margin-bottom: 3rem;
+}
+
+.stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+/* Team Section */
+.team-section {
+    padding: 4rem 0;
+}
+
+.team-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.team-member {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.member-image {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--brand-2);
+}
+
+.member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.member-info h3 {
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.member-role {
+    color: var(--brand-2);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.member-info p.muted {
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .about-image {
+        order: -1;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .values-section {
+        padding: 2rem 0;
+    }
+    
+    .team-section {
+        padding: 2rem 0;
+    }
+}

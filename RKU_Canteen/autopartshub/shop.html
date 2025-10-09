@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AutoPartsHub – Shop</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Cart state checkboxes (CSS-only) -->
+  <input id="p1" class="hidden" type="checkbox" />
+  <input id="p2" class="hidden" type="checkbox" />
+  <input id="p3" class="hidden" type="checkbox" />
+  <input id="p4" class="hidden" type="checkbox" />
+  <div class="topbar">
+    <div class="container nav">
+      <div class="left">
+        <a href="index.html" class="logo"><i></i><span>AutoPartsHub</span></a>
+        <a href="shop.html">Shop</a>
+        <a href="categories.html">Categories</a>
+        <a href="product.html">Product</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin.html">Admin</a>
+      </div>
+      <div class="right row">
+        <a href="cart.html" class="btn cart-indicator">Cart
+          <span class="dots">
+            <span class="dot d1"></span>
+            <span class="dot d2"></span>
+            <span class="dot d3"></span>
+            <span class="dot d4"></span>
+          </span>
+        </a>
+        <a href="checkout.html" class="btn ok">Buy Now</a>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="card" style="padding:1.2rem; margin-bottom:2rem; background:linear-gradient(90deg,#e0f2fe 60%,#fff 100%);">
+      <h2 class="section-title" style="margin:0;">Shop Popular Car Parts</h2>
+      <p class="muted">Browse our bestsellers and new arrivals. Use the filters to find exactly what you need.</p>
+    </div>
+    <div class="row" style="margin-bottom:1.5rem; gap:1.5rem;">
+      <select><option>All Categories</option><option>Brakes</option><option>Filters</option><option>Suspension</option><option>Lighting</option></select>
+      <select><option>Sort by: Featured</option><option>Price: Low to High</option><option>Price: High to Low</option><option>Newest</option></select>
+      <input type="text" placeholder="Search parts..." style="flex:1; min-width:180px;" />
+    </div>
+    <div class="grid products">
+      <!-- PRODUCT 1 -->
+      <article class="card product">
+        <img src="https://images.unsplash.com/photo-1513775192371-1b9d5d7fbf38?q=80&w=1200&auto=format&fit=crop" alt="Brake Pads" />
+        <div class="info">
+          <div class="row" style="justify-content: space-between;">
+            <strong>ProBrake Ceramic Pads</strong>
+            <span class="price">₹2,499</span>
+          </div>
+          <span class="pill">Brakes</span>
+          <div class="actions">
+            <a class="btn" href="product.html">View</a>
+            <a class="btn ok" href="checkout.html">Buy Now</a>
+            <label for="p1" class="btn ghost add"></label>
+          </div>
+        </div>
+      </article>
+      <!-- PRODUCT 2 -->
+      <article class="card product">
+        <img src="https://images.unsplash.com/photo-1617634795542-54786153a5b8?q=80&w=1200&auto=format&fit=crop" alt="Oil Filter" />
+        <div class="info">
+          <div class="row" style="justify-content: space-between;">
+            <strong>UltraFlow Oil Filter</strong>
+            <span class="price">₹799</span>
+          </div>
+          <span class="pill">Filters</span>
+          <div class="actions">
+            <a class="btn" href="product.html">View</a>
+            <a class="btn ok" href="checkout.html">Buy Now</a>
+            <label for="p2" class="btn ghost add"></label>
+          </div>
+        </div>
+      </article>
+      <!-- PRODUCT 3 -->
+      <article class="card product">
+        <img src="https://images.unsplash.com/photo-1587305062203-8c7017fa8f3b?q=80&w=1200&auto=format&fit=crop" alt="Shock Absorber" />
+        <div class="info">
+          <div class="row" style="justify-content: space-between;">
+            <strong>RideSmooth Shock Absorber</strong>
+            <span class="price">₹4,499</span>
+          </div>
+          <span class="pill">Suspension</span>
+          <div class="actions">
+            <a class="btn" href="product.html">View</a>
+            <a class="btn ok" href="checkout.html">Buy Now</a>
+            <label for="p3" class="btn ghost add"></label>
+          </div>
+        </div>
+      </article>
+      <!-- PRODUCT 4 -->
+      <article class="card product">
+        <img src="https://images.unsplash.com/photo-1534531339095-1cafc89a1f98?q=80&w=1200&auto=format&fit=crop" alt="Headlight" />
+        <div class="info">
+          <div class="row" style="justify-content: space-between;">
+            <strong>BrightBeam LED Headlight</strong>
+            <span class="price">₹1,899</span>
+          </div>
+          <span class="pill">Lighting</span>
+          <div class="actions">
+            <a class="btn" href="product.html">View</a>
+            <a class="btn ok" href="checkout.html">Buy Now</a>
+            <label for="p4" class="btn ghost add"></label>
+          </div>
+        </div>
+      </article>
+  <style>
+    /* Cart indicator dots update based on checked products */
+    .dots { display: inline-flex; gap: 4px; margin-left: 6px; }
+    .dot { width: 6px; height: 6px; border-radius: 999px; background: #cbd5e1; }
+    #p1:checked ~ .topbar .d1 { background: var(--ok); }
+    #p2:checked ~ .topbar .d2 { background: var(--ok); }
+    #p3:checked ~ .topbar .d3 { background: var(--ok); }
+    #p4:checked ~ .topbar .d4 { background: var(--ok); }
+    /* Change Add to Cart label when checked */
+    #p1:checked ~ .container label[for="p1"].add::after,
+    #p2:checked ~ .container label[for="p2"].add::after,
+    #p3:checked ~ .container label[for="p3"].add::after,
+    #p4:checked ~ .container label[for="p4"].add::after { content: "Added ✓"; }
+    label.add::after { content: "Add to Cart"; }
+  </style>
+      <!-- PRODUCT 5 -->
+      <article class="card product">
+        <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?q=80&w=1200&auto=format&fit=crop" alt="Air Filter" />
+        <div class="info">
+          <div class="row" style="justify-content: space-between;">
+            <strong>CleanAir Cabin Filter</strong>
+            <span class="price">₹599</span>
+          </div>
+          <span class="pill">Filters</span>
+          <div class="actions">
+            <a class="btn" href="product.html">View</a>
+            <a class="btn ok" href="checkout.html">Buy Now</a>
+            <button class="btn ghost" disabled>Add to Cart</button>
+          </div>
+        </div>
+      </article>
+      <!-- PRODUCT 6 -->
+      <article class="card product">
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?q=80&w=1200&auto=format&fit=crop" alt="Wiper Blades" />
+        <div class="info">
+          <div class="row" style="justify-content: space-between;">
+            <strong>RainGuard Wiper Blades</strong>
+            <span class="price">₹399</span>
+          </div>
+          <span class="pill">Accessories</span>
+          <div class="actions">
+            <a class="btn" href="product.html">View</a>
+            <a class="btn ok" href="checkout.html">Buy Now</a>
+            <button class="btn ghost" disabled>Add to Cart</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="footer">
+  <div class="container">© 2025 AutoPartsHub • HTML + CSS only demonstration</div>
+  <script src="main.js"></script>
+  </footer>
+</body>
+</html>
