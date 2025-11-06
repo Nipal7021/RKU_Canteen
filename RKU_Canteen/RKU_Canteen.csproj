@@ -132,6 +132,7 @@
     <Content Include="User\User_Login.aspx" />
     <Content Include="User\User_Register.aspx" />
     <Content Include="User\viewFood.aspx" />
+    <Content Include="User\View_cart.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -268,6 +269,13 @@
     </Compile>
     <Compile Include="User\viewFood.aspx.designer.cs">
       <DependentUpon>viewFood.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\View_cart.aspx.cs">
+      <DependentUpon>View_cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\View_cart.aspx.designer.cs">
+      <DependentUpon>View_cart.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

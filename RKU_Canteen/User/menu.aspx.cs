@@ -93,27 +93,34 @@ namespace RKU_Canteen.User
             }
             else if (e.CommandName == "cmd_add")
             {
-                da = new SqlDataAdapter("Select * from Admin_Register where email ='" + Session["admin"] + "'", con);
+                getcon();
+                da = new SqlDataAdapter("Select * from User_Register where Email ='" + Session["admin"] + "'", con);
                 ds = new DataSet();
                 da.Fill(ds);
 
-                int userid = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
-                int prodid = Convert.ToInt32(e.CommandArgument);
+                int userid = Convert.ToInt32(Session["Id"]);
+                int foodid = Convert.ToInt32(e.CommandArgument);
 
-                da = new SqlDataAdapter("Select * from admin_add_item where Id = '" + prodid + "'", con);
+                da = new SqlDataAdapter("Select * from admin_add_item where Id = '" + foodid + "'", con);
                 ds = new DataSet();
                 da.Fill(ds);
 
-                string prod_name = ds.Tables[0].Rows[0][2].ToString();
-                string prod_price = ds.Tables[0].Rows[0][3].ToString();
-                string img = ds.Tables[0].Rows[0][5].ToString();
+                string food_name = ds.Tables[0].Rows[0][2].ToString();
+                string food_price = ds.Tables[0].Rows[0][3].ToString();
+                string img = ds.Tables[0].Rows[0][4].ToString();
 
                 int quantity = 1;
-
+                cmd = new SqlCommand("Insert into cart_tbl(User_Cart_Id,Food_Cart_Id,Food_Image,Food_Name,Food_price,Food_Quantity) values ('" + userid + "','" + foodid + "', '" + img + "','" + food_name + "','" + food_price + "','" + quantity + "')", con);
+                cmd.ExecuteNonQuery();
             }
         }
 
-            void Filllist()
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("View_cart.aspx");
+        }
+
+        void Filllist()
             {
                 getcon();
                 da = new SqlDataAdapter("select * from admin_add_item", con);

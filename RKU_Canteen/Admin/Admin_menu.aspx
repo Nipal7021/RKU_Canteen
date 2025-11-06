@@ -85,25 +85,10 @@
                         <asp:Label ID="Label2" runat="server" Text='<%# Eval("Food_Price") %>'></asp:Label>
                         <br>
                         <br>
-                        <asp:LinkButton ID="btnViewDetails" runat="server" CommandArgument='<%# Eval("Id") %>' CommandName="cmd_view" OnClick="btnViewDetails_Click" Text="View Details"></asp:LinkButton>
+                        <asp:LinkButton ID="btnViewDetails" runat="server" CommandArgument='<%# Eval("Id") %>' CommandName="cmd_view" OnClick="btnViewDetails_Click" Text="View Food"></asp:LinkButton>
                         <br>
-                        <asp:LinkButton ID="LinkButton3" runat="server" CommandArgument='<%# Eval("Id") %>' CommandName="cmd_add">Add to Cart</asp:LinkButton>
                         <br>
-                        <br></br>
-                        <br></br>
-                        <br></br>
-                        <br></br>
-                        <br></br>
-                        <br></br>
-                        <br></br>
-                        </br>
-                        </br>
-                        </br>
-                        </br>
-                        </br>
-                        </br>
-                        </br>
-                        </br>
+
                         </ItemTemplate>
                     <SelectedItemStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
                 </asp:DataList>

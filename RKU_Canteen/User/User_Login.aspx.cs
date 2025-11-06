@@ -55,6 +55,7 @@ namespace RKU_Canteen.User
                 if (i > 0)
                 {
                     Session["Email"] = txteml.Text;
+                    Session["Id"] = ds.Tables[0].Rows[0]["Id"].ToString();
                     Session["UserLoggedIn"] = true;
                     Response.Redirect("index.aspx");
                 }

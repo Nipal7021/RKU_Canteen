@@ -116,7 +116,7 @@
                     
                     <!-- Admin Authentication Section -->
                     <!-- Admin Link (visible for all users) -->
-                        <a href="admin-login.html" class="nav-link" id="admin-link"><i class="fas fa-user-shield"></i>Admin </a>
+                        <a href="admin-login.html" class="nav-link" id="admin-link"><i class="fas fa-user-shield"></i> </a>
                         <div class="user-auth" id="user-auth">
                             <div class="user-dropdown" style="display: block;">
                                 <button class="user-menu-btn" id="user-menu-btn">

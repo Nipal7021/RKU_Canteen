@@ -19,10 +19,10 @@
                         <a href="index.html" class="logo"><span class="logo-text">Canteen</span> </a>
                     </div>
                     <div class="nav-links">
-                            <a href="index.aspx" class="nav-link active">Home</a> <a href="About_us.aspx" class="nav-link">About</a> <a href="menu.aspx" class="nav-link">Menu</a> <a href="Contact.aspx" class="nav-link">Contact</a> <a href="Food.aspx" class="nav-link">Food</a> <a href="Admin_Login.aspx" class="nav-link active">Login</a> <a href="Admin_Register.aspx" class="nav-link active">Register</a>
+                            <a href="index.aspx" class="nav-link active">Home</a> <a href="User/About_us.aspx" class="nav-link">About</a> <a href="menu.aspx" class="nav-link">Menu</a> <a href="Contact.aspx" class="nav-link">Contact</a>  <a href="Admin_Login.aspx" class="nav-link active">Login</a> <a href="Admin_Register.aspx" class="nav-link active">Register</a>
                     <!-- Admin Authentication Section -->
                     <!-- Admin Link (visible for all users) -->
-                        <a href="admin-login.html" class="nav-link" id="admin-link"><i class="fas fa-user-shield"></i>Admin </a>
+                        <a href="admin-login.html" class="nav-link" id="admin-link"><i class="fas fa-user-shield"></i></a>
                         <div class="user-auth" id="user-auth">
                             <div class="user-dropdown" style="display: block;">
                                 <button class="user-menu-btn" id="user-menu-btn">
